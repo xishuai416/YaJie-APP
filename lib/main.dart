@@ -1,152 +1,59 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:yajie_app/bindings/all_binding.dart';
+import 'package:yajie_app/components/logger_manager.dart';
 import 'package:yajie_app/components/system_tray_manager.dart';
+import 'package:yajie_app/components/theme.dart';
+import 'package:yajie_app/routes/app_pages.dart';
 
 void main() async {
+  // 初始化 windowManager（一些软件基本参数）
   WidgetsFlutterBinding.ensureInitialized();
   // 必须加上这一行。
   await windowManager.ensureInitialized();
   WindowOptions windowOptions = const WindowOptions(
-    size: Size(800, 500),
+    minimumSize: Size(960, 720), //设置窗口的最小尺寸
+    // maximumSize: Size(800, 600), //设置窗口的最大尺寸
+    //window 设置窗口的初始尺寸
+    size: Size(1440, 960),
+    //窗口是否居中
     center: true,
+    //设置窗口的背景色
     backgroundColor: Colors.transparent,
+    //true 表示在状态栏不显示程序
     skipTaskbar: false,
+    //true 表示设置Window一直位于最顶层
+    alwaysOnTop: false,
+    //hidden 表示隐藏标题栏 normal 显示标题栏
     titleBarStyle: TitleBarStyle.hidden,
+    //设置窗口的标题，
+    title: "YaJie APP",
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
+    //显示窗口
     await windowManager.show();
+    //聚焦窗口
     await windowManager.focus();
+    //ture设置窗口不可缩放 false 设置窗口可以缩放
+    windowManager.setResizable(true);
+    //设置窗口缩放宽高比
+    // windowManager.setAspectRatio(1.3);
+    //设置窗口是否支持阴影
+    windowManager.setHasShadow(true);
+    //设置窗口模式：亮色模式和暗色模式
+    // windowManager.setBrightness(Brightness.dark);
   });
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'YaJie App',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  final traysManager = SystemTrayManagerPage();
-  @override
-  void initState() {
-    super.initState();
-    traysManager.initState();
-  }
-
-  @override
-  void dispose() {
-  }
-  void _incrementCounter() {
-    traysManager.iconFlash();
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-      // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
+  // 初始化日志系统
+  await LoggerManager().initLogger();
+  await SystemTrayManagerPage().modifySystemTrayInfo("YaJie APP");
+  runApp(GetMaterialApp(
+    themeMode: ThemeMode.system, // 主题模式
+    theme: AppTheme.lightTheme(), // 浅色主题
+    debugShowCheckedModeBanner: false,
+    initialBinding: AllBinding(), // 初始化控制器
+    title: "Application",
+    initialRoute: AppPages.INITIAL,
+    getPages: AppPages.routes,
+  ));
 }

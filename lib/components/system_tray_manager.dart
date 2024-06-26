@@ -4,6 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:system_tray/system_tray.dart';
 import 'package:window_manager/window_manager.dart';
 class SystemTrayManagerPage{
+  //私有构造函数
+  SystemTrayManagerPage._internal() {
+    generateIcon();
+    generateContextMenu();
+  }
+  //保存单例
+  static final SystemTrayManagerPage _singleton = SystemTrayManagerPage._internal();
+
+  //工厂构造函数
+  factory SystemTrayManagerPage() => _singleton;
+
   Timer? _timer;
   bool _hasIcon = false;
   final SystemTray _systemTray = SystemTray();
@@ -11,8 +22,8 @@ class SystemTrayManagerPage{
   final String _iconPathOther = 'assets/images/app_icon.png';
   void generateIcon() async {
     await _systemTray.initSystemTray(
-      title: "下位机模拟程序",
-      toolTip: "下位机模拟程序",
+      title: "YaJie",
+      toolTip: "YaJie",
       iconPath: Platform.isWindows ? _iconPathWin : _iconPathOther,
     );
     _systemTray.registerSystemTrayEventHandler((eventName) {
@@ -29,6 +40,9 @@ class SystemTrayManagerPage{
     windowManager.show();
     windowManager.restore();
   }
+  Future<void> modifySystemTrayInfo(String toolTip) async {
+    await _systemTray.setSystemTrayInfo(toolTip: toolTip);
+  }
   void iconFlash() {
     _timer = Timer.periodic(const Duration(milliseconds: 500), (timer) async {
       if (_hasIcon) {
@@ -40,11 +54,6 @@ class SystemTrayManagerPage{
       }
       _hasIcon = !_hasIcon;
     });
-  }
-
-  void initState() {
-    generateIcon();
-    generateContextMenu();
   }
 
   void dispose() {
@@ -97,3 +106,4 @@ class SystemTrayManagerPage{
         await windowManager.destroy();
   }
 }
+
