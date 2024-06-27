@@ -87,7 +87,6 @@ class HomeController extends GetxController with WindowListener {
   void onWindowResize() async {
     bool isMaximized = await windowManager.isMaximized();
     this.isMaximized.value = isMaximized;
-
     LoggerManager().verbose('恢复窗口化（拖动状态栏）');
   }
 

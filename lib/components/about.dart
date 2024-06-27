@@ -11,8 +11,8 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 480,
-      height: 600,
+      width: 360,
+      height: 300,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -50,7 +50,6 @@ class About extends StatelessWidget {
             color: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-
         // 关闭按钮
         IconButton(
           // 隐藏反馈效果

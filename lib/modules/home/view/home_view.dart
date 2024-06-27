@@ -22,8 +22,8 @@ class HomeView extends GetView<HomeController> {
       // 内容部分
       body: const Column(
         children: [
-          // HomeHeader(),
-          // HomeBody(),
+          HomeHeader(),
+          HomeBody(),
         ],
       ),
     );
@@ -99,8 +99,8 @@ class HomeView extends GetView<HomeController> {
       // 最小化窗口按钮
       IconButton(
         // 隐藏反馈效果
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
+        highlightColor: Colors.grey[400],
+        hoverColor: Colors.grey[300],
         icon: Icon(
           Icons.horizontal_rule_rounded,
           color: Theme.of(context).colorScheme.onSecondary,
@@ -118,8 +118,8 @@ class HomeView extends GetView<HomeController> {
       const Padding(padding: EdgeInsets.all(10)),
       IconButton(
         // 隐藏反馈效果
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
+        highlightColor: Colors.grey[400],
+        hoverColor: Colors.grey[300],
 
         icon: Obx(() => Icon(
               controller.isMaximized.value ? Icons.filter_none : Icons.crop_din,
@@ -129,7 +129,6 @@ class HomeView extends GetView<HomeController> {
 
         // 点击事件
         onPressed: () async {
-          await YJDialog.show(context, title: 'title', content: 'content');
           // 判断窗口状态，并执行对应操作
           if (controller.isMaximized.value) {
             windowManager.restore();
@@ -143,8 +142,8 @@ class HomeView extends GetView<HomeController> {
       const Padding(padding: EdgeInsets.all(10)),
       IconButton(
         // 隐藏反馈效果
-        highlightColor: Colors.transparent,
-        hoverColor: Colors.transparent,
+        highlightColor: Colors.red[400],
+        hoverColor: Colors.red[300],
 
         icon: Icon(
           Icons.clear_rounded,
