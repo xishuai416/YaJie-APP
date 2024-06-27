@@ -103,11 +103,11 @@ class FileOutput extends LogOutput {
 
 Future<String> createDirectory() async {
   final Directory directory = await getApplicationDocumentsDirectory();
-  var file = Directory("${directory.path}/QiDian File Manager/logs"); // 创建文件夹(位置在用户 文档/QiDian File Manager 下)
+  var file = Directory("${directory.path}${Platform.pathSeparator}YaJie${Platform.pathSeparator}logs"); // 创建文件夹(位置在用户 文档/YaJie 下)
   try {
     bool exist = await file.exists();
     if (exist == false) {
-      await file.create();
+      await file.create(recursive: true);
     }
   } catch (e) {
     print("createDirectory error");
