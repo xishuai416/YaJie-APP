@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:window_manager/window_manager.dart';
@@ -50,7 +53,7 @@ class LoginView extends GetView<LoginController> {
               // 左侧区域
               _leftButton(context),
               // 右侧区域
-              _rightButton(context),
+              kIsWeb||(!Platform.isLinux&&!Platform.isMacOS&&!Platform.isWindows)? const SizedBox(width: 0): _rightButton(context),
             ],
           ),
         ),
@@ -108,7 +111,7 @@ class LoginView extends GetView<LoginController> {
 
         // 点击事件
         onPressed: () {
-          LoggerManager().verbose('最小化窗口');
+          LoggerManager().debug('最小化窗口');
           windowManager.minimize();
         },
       ),

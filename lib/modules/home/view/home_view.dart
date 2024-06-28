@@ -108,7 +108,7 @@ class HomeView extends GetView<HomeController> {
 
         // 点击事件
         onPressed: () {
-          LoggerManager().verbose('最小化窗口');
+          LoggerManager().debug('最小化窗口');
           windowManager.minimize();
         },
       ),

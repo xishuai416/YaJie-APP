@@ -1,13 +1,16 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:system_tray/system_tray.dart';
 import 'package:window_manager/window_manager.dart';
 class SystemTrayManagerPage{
   //私有构造函数
   SystemTrayManagerPage._internal() {
-    generateIcon();
-    generateContextMenu();
+    if (!kIsWeb&&(Platform.isLinux||Platform.isMacOS||Platform.isWindows)) {
+      generateIcon();
+      generateContextMenu();
+    }
   }
   //保存单例
   static final SystemTrayManagerPage _singleton = SystemTrayManagerPage._internal();

@@ -18,7 +18,6 @@ class LoginController extends GetxController with WindowListener {
     super.onInit();
     // 软件启动日志输出
     LoggerManager().debug('软件启动中...');
-    // print(fileDataController.filePath.value);
 
     // 监听关闭事件
     windowManager.addListener(this);
@@ -46,7 +45,7 @@ class LoginController extends GetxController with WindowListener {
 
     // 如果执行了关闭事件，并且列表不为空
     if (isPreventClose) {
-      LoggerManager().verbose('点击了软件的< × >（关闭）按钮');
+      LoggerManager().debug('点击了软件的< × >（关闭）按钮');
       // 如果当前窗口为最小化状态，则恢复窗口以起到提醒作用
       bool isMinimized = await windowManager.isMinimized();
       if (isMinimized) {
@@ -67,7 +66,7 @@ class LoginController extends GetxController with WindowListener {
         LoggerManager().info('退出运行');
         windowManager.destroy();
       } else {
-        LoggerManager().verbose('隐藏窗口');
+        LoggerManager().debug('隐藏窗口');
         windowManager.hide();
       }
     }
@@ -79,7 +78,7 @@ class LoginController extends GetxController with WindowListener {
     bool isMaximized = await windowManager.isMaximized();
     this.isMaximized.value = isMaximized;
 
-    LoggerManager().verbose('窗口最大化');
+    LoggerManager().debug('窗口最大化');
   }
 
   /// 恢复窗口事件（拖动状态栏）
@@ -87,8 +86,7 @@ class LoginController extends GetxController with WindowListener {
   void onWindowResize() async {
     bool isMaximized = await windowManager.isMaximized();
     this.isMaximized.value = isMaximized;
-    var size = await windowManager.getSize();
-    LoggerManager().verbose('恢复窗口化（拖动状态栏）${size.toString()}');
+    LoggerManager().debug('恢复窗口化（拖动状态栏）');
   }
 
   /// 窗口恢复事件（点击窗口化按钮）
@@ -97,7 +95,7 @@ class LoginController extends GetxController with WindowListener {
     bool isMaximized = await windowManager.isMaximized();
     this.isMaximized.value = isMaximized;
 
-    LoggerManager().verbose('恢复窗口化（点击窗口化按钮）');
+    LoggerManager().debug('恢复窗口化（点击窗口化按钮）');
   }
 
   /// 自定义方法：软件被关闭时截停并处理

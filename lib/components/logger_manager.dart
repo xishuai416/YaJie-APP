@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:common_utils/common_utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -118,8 +119,10 @@ Future<String> createDirectory() async {
 class LoggerManager {
   //私有构造函数
   LoggerManager._internal() {
-    deleteLogsOfBefore7Day();
-    initLogger();
+    if (!kIsWeb){
+      deleteLogsOfBefore7Day();
+      initLogger();
+    }
   }
 
   //保存单例
@@ -127,7 +130,6 @@ class LoggerManager {
 
   //工厂构造函数
   factory LoggerManager() => _singleton;
-
   late Logger logger;
 
   // log初始化设置
@@ -198,28 +200,30 @@ class LoggerManager {
 
   /// Debug 输出调试提示
   void debug(var message) {
-    logger.d(message);
-  }
-
-  // verbose
-  void verbose(var message) {
-    // ignore: deprecated_member_use
-    logger.v(message);
+    if (!kIsWeb){
+      logger.d(message);
+    }
   }
 
   /// info 输出信息提示
   void info(var message) {
-    logger.i(message);
+    if (!kIsWeb){
+      logger.i(message);
+    }
   }
 
   /// warning 输出警报提示
   void warning(var message) {
-    logger.w(message);
+    if (!kIsWeb){
+      logger.w(message);
+    }
   }
 
   /// error 输出错误提示
   void error(var message) {
-    logger.e(message);
+    if (!kIsWeb){
+      logger.e(message);
+    }
   }
 
   // 每次启动只保留7天内的日志，删除7天前的日志
