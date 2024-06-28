@@ -1,15 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:yajie_app/routes/app_pages.dart';
+import 'package:yajie_app/utils/get_storage_controller.dart';
 
 class AuthMiddleware extends GetMiddleware {
-  final box = GetStorage();
+  final getStorageController = Get.find<GetStorageController>();
   @override
   RouteSettings? redirect(String? route) {
-    var isLogin = box.read<bool>("isLogin");
-    isLogin ??= false;
-    if (!isLogin) {
+    if (!getStorageController.isLoggedIn.value) {
       return const RouteSettings(name: Routes.LOGIN);
     }
     return null;

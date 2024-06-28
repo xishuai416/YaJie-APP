@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:window_manager/window_manager.dart';
@@ -10,6 +11,7 @@ import 'package:yajie_app/components/system_tray_manager.dart';
 import 'package:yajie_app/components/theme.dart';
 import 'package:yajie_app/routes/app_pages.dart';
 import 'package:flutter/foundation.dart';
+import 'package:yajie_app/utils/get_storage_controller.dart';
 void main() async {
   if (!kIsWeb) {
     // 初始化日志系统
@@ -55,6 +57,7 @@ void main() async {
     }
   }
   await GetStorage.init();
+  Get.put(GetStorageController());
   runApp(GetMaterialApp(
     themeMode: ThemeMode.system, // 主题模式
     theme: AppTheme.lightTheme(), // 浅色主题
