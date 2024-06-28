@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -60,6 +61,8 @@ void main() async {
   Get.put(GetStorageController());
   runApp(GetMaterialApp(
     themeMode: ThemeMode.system, // 主题模式
+    builder: BotToastInit(),
+    navigatorObservers: [BotToastNavigatorObserver()], //2.注册路由观察者
     theme: AppTheme.lightTheme(), // 浅色主题
     debugShowCheckedModeBanner: false,
     initialBinding: AllBinding(), // 初始化控制器
