@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:local_notifier/local_notifier.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:yajie_app/bindings/all_binding.dart';
 import 'package:yajie_app/components/logger_manager.dart';
@@ -55,6 +56,11 @@ void main() async {
         // windowManager.setBrightness(Brightness.dark);
       });
       await SystemTrayManagerPage().modifySystemTrayInfo("YaJie APP");
+      await localNotifier.setup(
+        appName: 'YaJie-APP',
+        // 参数 shortcutPolicy 仅适用于 Windows
+        shortcutPolicy: ShortcutPolicy.requireCreate,
+      );
     }
   }
   await GetStorage.init();
