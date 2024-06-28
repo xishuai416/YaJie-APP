@@ -1,8 +1,7 @@
 // 主题文件 (关于flutter主题的详细介绍可查看：https://book.flutterchina.club/chapter7/theme.html#_7-4-2-%E4%B8%BB%E9%A2%98-theme)
 
 import 'package:flutter/material.dart';
-import './color/colorPalette.dart';
-
+import 'package:yajie_app/components/color/colorPalette.dart';
 // Top.1 主题
 class AppTheme {
   // 浅色主题

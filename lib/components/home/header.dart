@@ -3,7 +3,6 @@
 library;
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomeHeader extends StatefulWidget {
   /// 首页页眉

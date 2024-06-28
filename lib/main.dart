@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:yajie_app/bindings/all_binding.dart';
 import 'package:yajie_app/components/logger_manager.dart';
@@ -53,7 +54,7 @@ void main() async {
       await SystemTrayManagerPage().modifySystemTrayInfo("YaJie APP");
     }
   }
-
+  await GetStorage.init();
   runApp(GetMaterialApp(
     themeMode: ThemeMode.system, // 主题模式
     theme: AppTheme.lightTheme(), // 浅色主题

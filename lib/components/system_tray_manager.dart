@@ -30,7 +30,6 @@ class SystemTrayManagerPage{
       iconPath: Platform.isWindows ? _iconPathWin : _iconPathOther,
     );
     _systemTray.registerSystemTrayEventHandler((eventName) {
-      debugPrint("eventName: $eventName");
       if (eventName == kSystemTrayEventClick) {
         Platform.isWindows ? showWindow() : _systemTray.popUpContextMenu();
       } else if (eventName == kSystemTrayEventRightClick) {

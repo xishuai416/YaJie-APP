@@ -44,6 +44,7 @@ dependencies:
   logger: ^2.3.0 # 日志管理
   common_utils: ^2.1.0 # 公共工具模块
   url_launcher: ^6.3.0 # 打开链接
+  get_storage: ^2.1.1 # 本地存储0.
 dev_dependencies:
   flutter_test:
     sdk: flutter
