@@ -5,11 +5,11 @@ import 'package:yajie_app/components/about.dart';
 import 'package:yajie_app/components/dialog.dart';
 import 'package:yajie_app/components/home/header.dart';
 import 'package:yajie_app/components/logger_manager.dart';
-import 'package:yajie_app/modules/home/controllers/home_controller.dart';
+import 'package:yajie_app/modules/login/controllers/login_controller.dart';
 
 /// 首页视图
-class HomeView extends GetView<HomeController> {
-  const HomeView({super.key});
+class LoginView extends GetView<LoginController> {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {

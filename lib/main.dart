@@ -13,10 +13,10 @@ void main() async {
   // 必须加上这一行。
   await windowManager.ensureInitialized();
   WindowOptions windowOptions = const WindowOptions(
-    minimumSize: Size(304, 608), //设置窗口的最小尺寸
+    minimumSize: Size(375, 667), //设置窗口的最小尺寸
     // maximumSize: Size(800, 600), //设置窗口的最大尺寸
     //window 设置窗口的初始尺寸
-    size: Size(960,1280),
+    size: Size(600,800),
     //窗口是否居中
     center: true,
     //设置窗口的背景色

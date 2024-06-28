@@ -12,7 +12,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 360,
-      height: 300,
+      height: 340,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -81,19 +81,24 @@ class About extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         // 开源协议
-        Row(children: [
-          const Text('本项目使用'),
-          InkWell(
-            child: Text(' MIT ', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-            onTap: () async {
-              Uri url = Uri.parse('https://opensource.org/license/MIT');
-              if (!await launchUrl(url)) {
-                throw Exception('Could not launch $url');
-              }
-            },
-          ),
-          const Text('开源协议，请自觉遵守相关条例。'),
-        ]),
+        Row(
+          children: [
+            const Text('本项目使用'),
+            InkWell(
+              child: Text(
+                ' MIT ',
+                style: TextStyle(color: Theme.of(context).colorScheme.primary),
+              ),
+              onTap: () async {
+                Uri url = Uri.parse('https://opensource.org/license/MIT');
+                if (!await launchUrl(url)) {
+                  throw Exception('Could not launch $url');
+                }
+              },
+            ),
+            const Expanded(child: Text('开源协议，请自觉遵守相关条例。')),
+          ],
+        ),
 
         // 项目开源地址
         const SizedBox(height: 30),
@@ -101,33 +106,47 @@ class About extends StatelessWidget {
         const SizedBox(height: 10),
 
         // gitee
-        Row(children: [
-          const Text('gitee：', style: TextStyle(fontWeight: FontWeight.w800)),
-          InkWell(
-            child: Text('https://gitee.com/xishuai416/YaJie-APP.git', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-            onTap: () async {
-              Uri url = Uri.parse('https://gitee.com/xishuai416/YaJie-APP.git');
-              if (!await launchUrl(url)) {
-                throw Exception('Could not launch $url');
-              }
-            },
-          ),
-        ]),
+        Row(
+          children: [
+            const Text('gitee：', style: TextStyle(fontWeight: FontWeight.w800)),
+            Expanded(
+              child: InkWell(
+                child: Text(
+                  'https://gitee.com/xishuai416/YaJie-APP.git',
+                  style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                ),
+                onTap: () async {
+                  Uri url = Uri.parse('https://gitee.com/xishuai416/YaJie-APP.git');
+                  if (!await launchUrl(url)) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
 
         // github
         const SizedBox(height: 10),
-        Row(children: [
-          const Text('gethub：', style: TextStyle(fontWeight: FontWeight.w800)),
-          InkWell(
-            child: Text('https://github.com/xishuai416/YaJie-APP.git', style: TextStyle(color: Theme.of(context).colorScheme.primary)),
-            onTap: () async {
-              Uri url = Uri.parse('https://github.com/xishuai416/YaJie-APP.git');
-              if (!await launchUrl(url)) {
-                throw Exception('Could not launch $url');
-              }
-            },
-          ),
-        ]),
+        Row(
+          children: [
+            const Text('github：', style: TextStyle(fontWeight: FontWeight.w800)),
+            Expanded(
+              child: InkWell(
+                child: Text(
+                  'https://github.com/xishuai416/YaJie-APP.git',
+                  style: TextStyle(color: Theme.of(context).colorScheme.primary),
+                ),
+                onTap: () async {
+                  Uri url = Uri.parse('https://github.com/xishuai416/YaJie-APP.git');
+                  if (!await launchUrl(url)) {
+                    throw Exception('Could not launch $url');
+                  }
+                },
+              ),
+            ),
+          ],
+        ),
       ],
     );
   }
