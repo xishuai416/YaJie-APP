@@ -7,6 +7,19 @@ import 'package:yajie_app/utils/get_storage_controller.dart';
 /// - 描述：
 class HomeController extends GetxController {
   final getStorageController = Get.find<GetStorageController>();
+
+  var selectedIndex = 0.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+  void onTap(int index) {
+    selectedIndex.value = index;
+    BotToast.showText(text: '你点击了第$index个选项');
+    Get.toNamed('/',id: 1);
+  }
+
   void exit(){
     getStorageController.logout();
     Get.offAllNamed(Routes.LOGIN);
