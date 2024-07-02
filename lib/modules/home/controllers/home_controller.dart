@@ -15,7 +15,22 @@ class HomeController extends GetxController {
   void onTap(int index) {
     selectedIndex.value = index;
     BotToast.showText(text: '你点击了第$index个选项');
-    Get.toNamed('/',id: 1);
+    switch(index){
+      case 0:
+        Get.toNamed('/medical',id: 1);
+        break;
+      case 1:
+        Get.toNamed('/food',id: 1);
+        break;
+      case 2:
+        Get.toNamed('/menu',id: 1);
+        break;
+      case 3:
+        Get.toNamed('/settings',id: 1);
+        break;
+      default:
+        break;
+    }
   }
 
   void exit()async{
