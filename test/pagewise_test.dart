@@ -13,7 +13,28 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
+// gradient: SweepGradient(
+//   colors: [
+//     Colors.red,
+//     Colors.yellow,
+//     Colors.green,
+//     Colors.blue,
+//   ],
+//   stops: [0.0, 0.25, 0.5, 1.0],
+// ),
+// gradient: RadialGradient(
+//   center: Alignment(0.5, 0.5),
+//   radius: 0.8,
+//   colors: [
+//     Colors.blue,
+//     Colors.green,
+//     Colors.red,
+//   ],
+// ),
+// image: DecorationImage(
+//   image: NetworkImage(""),
+//   fit: BoxFit.cover
+// ),
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
