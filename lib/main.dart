@@ -4,7 +4,6 @@ import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:local_notifier/local_notifier.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:yajie_app/bindings/all_binding.dart';
@@ -13,7 +12,7 @@ import 'package:yajie_app/components/system_tray_manager.dart';
 import 'package:yajie_app/components/theme.dart';
 import 'package:yajie_app/routes/app_pages.dart';
 import 'package:flutter/foundation.dart';
-import 'package:yajie_app/utils/get_storage_controller.dart';
+import 'package:yajie_app/utils/yj_cache.dart';
 void main() async {
   if (!kIsWeb) {
     // 初始化日志系统
@@ -39,7 +38,7 @@ void main() async {
         //hidden 表示隐藏标题栏 normal 显示标题栏
         titleBarStyle: TitleBarStyle.hidden,
         //设置窗口的标题，
-        title: "YaJie APP",
+        title: "YaJie-APP",
       );
       windowManager.waitUntilReadyToShow(windowOptions, () async {
         //显示窗口
@@ -55,16 +54,21 @@ void main() async {
         //设置窗口模式：亮色模式和暗色模式
         // windowManager.setBrightness(Brightness.dark);
       });
-      await SystemTrayManagerPage().modifySystemTrayInfo("YaJie APP");
-      await localNotifier.setup(
-        appName: 'YaJie-APP',
-        // 参数 shortcutPolicy 仅适用于 Windows
-        shortcutPolicy: ShortcutPolicy.requireCreate,
-      );
+      await SystemTrayManagerPage().modifySystemTrayInfo(windowOptions.title!);
+      if (Platform.isWindows){
+        localNotifier.setup(
+          appName: windowOptions.title!,
+          // 参数 shortcutPolicy 仅适用于 Windows
+          shortcutPolicy: ShortcutPolicy.requireCreate,
+        );
+      }else{
+        localNotifier.setup(
+          appName: windowOptions.title!,
+        );
+      }
     }
   }
-  await GetStorage.init();
-  Get.put(GetStorageController());
+  await YjCache().init();
   runApp(GetMaterialApp(
     themeMode: ThemeMode.system, // 主题模式
     builder: BotToastInit(),

@@ -1,13 +1,11 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:get/get.dart';
 import 'package:local_notifier/local_notifier.dart';
+import 'package:yajie_app/dao/login_dao.dart';
 import 'package:yajie_app/routes/app_pages.dart';
-import 'package:yajie_app/utils/get_storage_controller.dart';
 /// 主页控制器
 /// - 描述：
 class HomeController extends GetxController {
-  final getStorageController = Get.find<GetStorageController>();
-
   var selectedIndex = 0.obs;
 
   @override
@@ -20,10 +18,16 @@ class HomeController extends GetxController {
     Get.toNamed('/',id: 1);
   }
 
-  void exit(){
-    getStorageController.logout();
-    Get.offAllNamed(Routes.LOGIN);
-    _localNot();
+  void exit()async{
+    var cancel =BotToast.showLoading();
+    var result = await LoginDao.logout();
+    cancel();
+    if (result) {
+      Get.offAllNamed(Routes.LOGIN);
+      BotToast.showText(text: "退出成功");
+    }else{
+      BotToast.showText(  text: '注销请求失败！');
+    }
   }
   void _localNot() {
     final notification = LocalNotification(

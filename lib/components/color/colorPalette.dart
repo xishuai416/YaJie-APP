@@ -15,15 +15,15 @@ import 'colorValue_light.dart';
 /// - backgroundColor: 背景色
 /// - vipColor: 会员色
 
-class YJColor {
+class Colorpalette {
   // 色板值
   Map<String, List<Map<String, int>>> colorValues = {};
-  YJColor(this.colorValues);
+  Colorpalette(this.colorValues);
 
   /// 灰色（根据用户填写的色阶自适应颜色，如果没有填写，默认色阶为5）
   static Color gray({int levels = 5, double opacity = 1.0}) {
     // 获取色值
-    var yjColor = YJColor(value);
+    var yjColor = Colorpalette(value);
     var gray = yjColor.colorValues['gray']!;
 
     // 自定义颜色
@@ -48,7 +48,7 @@ class YJColor {
   // 主题色（默认蓝色，根据用户填写的色阶自适应颜色，如果没有填写，默认色阶为4）
   static Color primary({int levels = 4, double opacity = 1.0}) {
     // 获取色值
-    var yjColor = YJColor(value);
+    var yjColor = Colorpalette(value);
     var primary = yjColor.colorValues['primary']!;
 
     switch (levels) {

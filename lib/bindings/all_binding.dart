@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:yajie_app/components/logger_manager.dart';
-import 'package:yajie_app/utils/get_storage_controller.dart';
 import 'package:yajie_app/utils/window_controller.dart';
 class AllBinding extends Bindings {
   @override

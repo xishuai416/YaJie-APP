@@ -73,7 +73,6 @@ class YjAppbar extends StatelessWidget implements PreferredSizeWidget {
         'YaJie',
         style: TextStyle(
           fontSize: 18,
-          fontFamily: '微软雅黑',
           fontWeight: FontWeight.bold,
           color: Color.fromRGBO(31, 41, 55, 1),
         ),
