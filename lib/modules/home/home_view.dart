@@ -17,7 +17,7 @@ class HomeView extends GetView<HomeController> {
       // 内容部分
       body: LayoutBuilder(
         builder: (context, constraints) {
-         if (constraints.maxWidth < constraints.maxHeight ||constraints.maxWidth<500){
+         if (constraints.maxWidth < constraints.maxHeight && constraints.maxWidth<500){
            return Obx(() => Scaffold(
              body: _getAppBar(),
              bottomNavigationBar: BottomNavigationBar(
