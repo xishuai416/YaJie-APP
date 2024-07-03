@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:system_tray/system_tray.dart';
 import 'package:window_manager/window_manager.dart';
 class SystemTrayManagerPage{
@@ -79,6 +78,8 @@ class SystemTrayManagerPage{
     await menu.buildFrom([
       MenuItemLabel(
         label: '显示',
+        enabled: true,
+        image: _getImagePath('show'),
         onClicked: (menuItem) {
           windowManager.show();
           windowManager.restore();
@@ -86,6 +87,7 @@ class SystemTrayManagerPage{
       ),
       MenuItemLabel(
         label: '隐藏',
+        image: _getImagePath('hide'),
         onClicked: (menuItem) {
           windowManager.hide();
         },
@@ -93,12 +95,17 @@ class SystemTrayManagerPage{
       MenuSeparator(),
       MenuItemLabel(
         label: '退出程序',
+        image: _getImagePath('exit'),
         onClicked: onTrayMenuItemClick,
       ),
     ]);
     await _systemTray.setContextMenu(menu);
   }
-
+  String _getImagePath(String imageName) {
+    return Platform.isWindows
+        ? 'assets/images/$imageName.bmp'
+        : 'assets/images/$imageName.png';
+  }
   void destroyTrayManager() async {
     await _systemTray.destroy();
   }
