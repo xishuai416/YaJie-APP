@@ -36,7 +36,7 @@ class HomeView extends GetView<HomeController> {
                  onDestinationSelected: controller.onTap,
                  labelType: controller.isExpend.value?NavigationRailLabelType.none:NavigationRailLabelType.all,
                  selectedIconTheme: IconThemeData(color: Colors.amber[500]),
-                 selectedLabelTextStyle: TextStyle(color: Colors.amber[500]),
+                 selectedLabelTextStyle: TextStyle(color: Colors.amber[500],fontFamily: 'QTxiaotu'),
                  elevation: 10,
                  minWidth: 66,
                  minExtendedWidth:88,
