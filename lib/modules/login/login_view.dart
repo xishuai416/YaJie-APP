@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yajie_app/modules/login/controllers/login_controller.dart';
-import 'package:yajie_app/utils/yj_appbar.dart';
+import 'package:yajie_app/modules/login/login_controller.dart';
+import 'package:yajie_app/components/yj_appbar.dart';
 
 /// 首页视图
 class LoginView extends GetView<LoginController> {

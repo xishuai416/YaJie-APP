@@ -79,7 +79,7 @@ class YJDialog {
       alignment: Alignment.center,
       children: [
         AlertDialog(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           surfaceTintColor: Colors.transparent,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15)),
@@ -147,7 +147,7 @@ class YJDialogWindow {
     Widget? child,
   }) async {
     // 实例化当前对象
-    YJDialogWindow qiDialogWindow = YJDialogWindow(
+    YJDialogWindow yjDialogWindow = YJDialogWindow(
       child: child,
       cancellable: cancellable,
     );
@@ -155,7 +155,7 @@ class YJDialogWindow {
     bool res = await showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => qiDialogWindow.dialog(context),
+      builder: (context) => yjDialogWindow.dialog(context),
     );
 
     return res;
@@ -168,7 +168,7 @@ class YJDialogWindow {
       alignment: Alignment.center,
       children: [
         AlertDialog(
-          backgroundColor: Theme.of(context).colorScheme.background,
+          backgroundColor: Theme.of(context).colorScheme.surface,
           surfaceTintColor: Colors.transparent,
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(15)),

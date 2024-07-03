@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:yajie_app/modules/home/controllers/home_controller.dart';
+import 'package:yajie_app/modules/home/home_controller.dart';
 class HomeBinding extends Bindings {
   @override
   void dependencies() {

@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
-import 'package:yajie_app/modules/home/bindings/home_binding.dart';
-import 'package:yajie_app/modules/home/view/home_view.dart';
-import 'package:yajie_app/modules/login/bindings/login_binding.dart';
-import 'package:yajie_app/modules/login/view/login_view.dart';
+import 'package:yajie_app/modules/home/home_binding.dart';
+import 'package:yajie_app/modules/home/home_view.dart';
+import 'package:yajie_app/modules/login/login_binding.dart';
+import 'package:yajie_app/modules/login/login_view.dart';
 import 'package:yajie_app/routes/middlewares/AuthMiddleware.dart';
 
 part 'app_routes.dart';

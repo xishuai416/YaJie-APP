@@ -75,8 +75,7 @@ class WindowController extends GetxController with WindowListener{
   void onWindowMaximize() async {
     bool isMaximized = await windowManager.isMaximized();
     this.isMaximized.value = isMaximized;
-
-    LoggerManager().debug('窗口最大化');
+    // LoggerManager().debug('窗口最大化');
   }
 
   /// 恢复窗口事件（拖动状态栏）
@@ -84,7 +83,7 @@ class WindowController extends GetxController with WindowListener{
   void onWindowResize() async {
     bool isMaximized = await windowManager.isMaximized();
     this.isMaximized.value = isMaximized;
-    LoggerManager().debug('恢复窗口化（拖动状态栏）');
+    // LoggerManager().debug('恢复窗口化（拖动状态栏）');
   }
 
   /// 窗口恢复事件（点击窗口化按钮）
@@ -92,8 +91,7 @@ class WindowController extends GetxController with WindowListener{
   void onWindowUnmaximize() async {
     bool isMaximized = await windowManager.isMaximized();
     this.isMaximized.value = isMaximized;
-
-    LoggerManager().debug('恢复窗口化（点击窗口化按钮）');
+    // LoggerManager().debug('恢复窗口化（点击窗口化按钮）');
   }
 
   /// 自定义方法：软件被关闭时截停并处理

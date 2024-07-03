@@ -55,10 +55,9 @@ class YjAppbar extends StatelessWidget implements PreferredSizeWidget {
         // 隐藏反馈效果
         highlightColor: Colors.transparent,
         hoverColor: Colors.transparent,
-
         // 按钮图标
         icon: Icon(
-          Icons.menu,
+          Icons.help,
           size: 24,
           color: Theme.of(context).colorScheme.onSecondary,
         ),
