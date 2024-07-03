@@ -3,6 +3,7 @@ import 'package:window_manager/window_manager.dart';
 import 'package:get/get.dart';
 import 'package:yajie_app/components/dialog.dart';
 import 'package:yajie_app/components/logger_manager.dart';
+import 'package:yajie_app/components/system_tray_manager.dart';
 class WindowController extends GetxController with WindowListener{
   /// 获取主体
   BuildContext? context;
@@ -62,6 +63,7 @@ class WindowController extends GetxController with WindowListener{
       if (popUpResults) {
         // 退出运行
         LoggerManager().info('退出运行');
+        SystemTrayManagerPage().destroyTrayManager();
         windowManager.destroy();
       } else {
         LoggerManager().debug('隐藏窗口');
