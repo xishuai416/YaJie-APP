@@ -22,7 +22,7 @@ class HomeController extends GetxController {
         Get.toNamed('/food',id: 1);
         break;
       case 2:
-        Get.toNamed('/menu',id: 1);
+        Get.toNamed('/menus',id: 1);
         break;
       case 3:
         Get.toNamed('/settings',id: 1);

@@ -1,7 +1,11 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:yajie_app/modules/food/food_view.dart';
 import 'package:yajie_app/modules/home/home_controller.dart';
+import 'package:yajie_app/modules/medical/medical_view.dart';
+import 'package:yajie_app/modules/menus/menus_view.dart';
+import 'package:yajie_app/modules/settings/settings_view.dart';
 import 'package:yajie_app/routes/middlewares/AuthMiddleware.dart';
 import 'package:yajie_app/components/yj_appbar.dart';
 
@@ -91,62 +95,32 @@ class HomeView extends GetView<HomeController> {
           case "/medical":
             return GetPageRoute(
               settings: settings,
-              page: () => Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                  },
-                  child: const Text('药品'),
-                ),
-              ),
+              page: () => const MedicalView(),
               middlewares: [AuthMiddleware()],
             );
           case "/food":
             return GetPageRoute(
               settings: settings,
-              page: () => Center(
-                child: ElevatedButton(
-                  onPressed: () {
-
-                  },
-                  child: const Text('食品'),
-                ),
-              ),
+              page: () => const FoodView(),
               middlewares: [AuthMiddleware()],
             );
-          case "/menu":
+          case "/menus":
             return GetPageRoute(
               settings: settings,
-              page: () => Center(
-                child: ElevatedButton(
-                  onPressed: () {
-
-                  },
-                  child: const Text('菜谱'),
-                ),
-              ),
+              page: () => const MenusView(),
               middlewares: [AuthMiddleware()],
             );
           case "/settings":
             return GetPageRoute(
               settings: settings,
-              page: () => Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                  },
-                  child: const Text('设置'),
-                ),
-              ),
+              page: () => const SettingsView(),
               middlewares: [AuthMiddleware()],
             );
           default:
             return  GetPageRoute(
               settings: settings,
-              page: () => Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                  },
-                  child: const Text('功能正在开发中...'),
-                ),
+              page: () => const Center(
+                child: Text('功能正在开发中...'),
               ),
               middlewares: [AuthMiddleware()],
             );
