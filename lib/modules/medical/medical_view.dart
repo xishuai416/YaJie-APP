@@ -7,6 +7,7 @@ class MedicalView extends GetView<MedicalController> {
   const MedicalView({super.key});
   @override
   Widget build(BuildContext context) {
+
     return const Text("medical");
   }
 

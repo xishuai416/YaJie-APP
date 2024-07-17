@@ -13,7 +13,7 @@ class HomeController extends GetxController {
   }
   void onTap(int index) {
     selectedIndex.value = index;
-    BotToast.showText(text: '你点击了第$index个选项');
+    // BotToast.showText(text: '你点击了第$index个选项');
     switch(index){
       case 0:
         Get.toNamed('/medical',id: 1);

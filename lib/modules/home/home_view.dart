@@ -1,12 +1,8 @@
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yajie_app/modules/food/food_view.dart';
 import 'package:yajie_app/modules/home/home_controller.dart';
-import 'package:yajie_app/modules/medical/medical_view.dart';
-import 'package:yajie_app/modules/menus/menus_view.dart';
-import 'package:yajie_app/modules/settings/settings_view.dart';
-import 'package:yajie_app/routes/middlewares/AuthMiddleware.dart';
+import 'package:yajie_app/routes/app_pages.dart';
 import 'package:yajie_app/components/yj_appbar.dart';
 
 /// 首页视图
@@ -89,43 +85,8 @@ class HomeView extends GetView<HomeController> {
   Widget _getAppBar() {
     return Navigator(
       key: Get.nestedKey(1),
-      initialRoute: '/medical',
-      onGenerateRoute: (settings) {
-        switch(settings.name){
-          case "/medical":
-            return GetPageRoute(
-              settings: settings,
-              page: () => const MedicalView(),
-              middlewares: [AuthMiddleware()],
-            );
-          case "/food":
-            return GetPageRoute(
-              settings: settings,
-              page: () => const FoodView(),
-              middlewares: [AuthMiddleware()],
-            );
-          case "/menus":
-            return GetPageRoute(
-              settings: settings,
-              page: () => const MenusView(),
-              middlewares: [AuthMiddleware()],
-            );
-          case "/settings":
-            return GetPageRoute(
-              settings: settings,
-              page: () => const SettingsView(),
-              middlewares: [AuthMiddleware()],
-            );
-          default:
-            return  GetPageRoute(
-              settings: settings,
-              page: () => const Center(
-                child: Text('功能正在开发中...'),
-              ),
-              middlewares: [AuthMiddleware()],
-            );
-        }
-      },
+      initialRoute: Routes.MEDICAL,
+      onGenerateRoute: AppPages.generateRoute,
     );
   }
   final List<NavigationRailDestination> destinations = const [
