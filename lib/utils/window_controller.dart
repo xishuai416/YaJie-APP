@@ -52,7 +52,7 @@ class WindowController extends GetxController with WindowListener{
       }
 
       // 监听确认框执行情况，如果点击了确认则真正关闭软件
-      bool popUpResults = await YJDialog.show(
+      bool? popUpResults = await YJDialog.show(
         context!,
         title: '确认',
         content: '是否最小化至托盘，不退出程序？',
@@ -60,7 +60,9 @@ class WindowController extends GetxController with WindowListener{
         rBtnText: "退出",
       );
 
-      if (popUpResults) {
+      if (popUpResults == null){
+        LoggerManager().info('用户点击了外部区域或对话框被关闭');
+      }else if (popUpResults) {
         // 退出运行
         LoggerManager().info('退出运行');
         SystemTrayManagerPage().destroyTrayManager();

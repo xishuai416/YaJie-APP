@@ -30,7 +30,7 @@ class YJDialog {
     this.rBtnText = "确认",
   });
 
-  static Future<bool> show(
+  static Future<bool?> show(
       context, {
         /// 标题
         required String title,
@@ -67,11 +67,12 @@ class YJDialog {
     // 执行回调方法
     if (function != null) function();
 
-    bool res = await showDialog(
+    final res = await showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) => yjDialog.dialog(context),
     );
+
     return res;
   }
 
@@ -147,7 +148,7 @@ class YJDialogWindow {
   });
 
   /// 调用弹窗
-  static Future<bool> show(
+  static Future<bool?> show(
       context, {
         /// 弹窗是否可取消
         bool cancellable = false,
@@ -168,12 +169,11 @@ class YJDialogWindow {
       rBtnText: rBtnText,
     );
 
-    bool res = await showDialog(
+    final res = await showDialog(
       context: context,
       barrierDismissible: barrierDismissible,
       builder: (context) => yjDialogWindow.dialog(context),
     );
-
     return res;
   }
 
