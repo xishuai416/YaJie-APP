@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:yajie_app/modules/food/food_controller.dart';
 
-class LoginBinding extends Bindings {
+class FoodBinding extends Bindings {
   @override
   void dependencies() {
     /* 食品 */

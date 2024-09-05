@@ -27,11 +27,11 @@ class AppTheme {
         ),
 
         // 按钮样式
-        textButtonTheme: TextButtonThemeData(
-          style: ButtonStyle(
-            foregroundColor: WidgetStateProperty.resolveWith((states) => Colorpalette.gray()), // 设置按钮文字颜色
-          ),
-        ),
+        // textButtonTheme: TextButtonThemeData(
+        //   style: ButtonStyle(
+        //     foregroundColor: WidgetStateProperty.resolveWith((states) => Colorpalette.gray()), // 设置按钮文字颜色
+        //   ),
+        // ),
 
         // 底部导航栏
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -52,19 +52,20 @@ class AppTheme {
         dataTableTheme: const DataTableThemeData(),
 
         // 色彩大全
-        colorScheme: ColorScheme(
-          brightness: Brightness.light,
-          primary: Colorpalette.primary(), // 主要色
-          secondary: Colorpalette.safety(), // 次要色
-          primaryContainer: Colors.white, // 主要容器背景色
-          secondaryContainer: Colors.black, // 次要容器背景色
-          error: Colorpalette.emphasize(levels: 4), // 错误色
-          onError: Colorpalette.warning(),
-          onPrimary: Colorpalette.gray(), // 主要字体颜色
-          onSecondary: Colorpalette.gray(levels: 3), // 次要字体颜色
-          onSurface: Colorpalette.gray(), // 标题字体色
-          surface: Colorpalette.backgroundColor(), // 标题字体色背景（appBar背景色）
-        ));
+        // colorScheme: ColorScheme(
+        //   brightness: Brightness.light,
+        //   primary: Colorpalette.primary(), // 主要色
+        //   secondary: Colorpalette.safety(), // 次要色
+        //   primaryContainer: Colors.white, // 主要容器背景色
+        //   secondaryContainer: Colors.black, // 次要容器背景色
+        //   error: Colorpalette.emphasize(levels: 4), // 错误色
+        //   onError: Colorpalette.warning(),
+        //   onPrimary: Colorpalette.gray(), // 主要字体颜色
+        //   onSecondary: Colorpalette.gray(levels: 3), // 次要字体颜色
+        //   onSurface: Colorpalette.gray(), // 标题字体色
+        //   surface: Colorpalette.backgroundColor(), // 标题字体色背景（appBar背景色）
+        // )
+    );
   }
 
   // 深色主题
